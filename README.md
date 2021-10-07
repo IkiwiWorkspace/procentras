@@ -1,62 +1,88 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Realpro
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Reference sheet for the project. To be edited when more relevant info needs to be displayed in a convenient location.
 
-## About Laravel
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Since github doesn't track all of the files that are needed for the application to fucntion, there is some setup work that needs to be 
+done. 
+This guide is relevant for windows users, using [Xampp](https://www.apachefriends.org/index.html) to host the website locally.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisite software
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+[Xampp](https://www.apachefriends.org/index.html) for hosting the website. Apache, MySql and PHP are included in the instalation and don't
+have to be installed separately.
 
-## Learning Laravel
+[Composer](https://getcomposer.org/download/) for managing dependencies. I recommend to download the installer and not bother with the 
+command line installation method.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**Handy, but not necessarily needed:** <br/>
+[Github desktop](https://desktop.github.com/) - a conveniant tool for collaboration with git. Provides a graphical user interface for 
+git, so work can be done without using the git bash.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Cloning the repository
 
-## Laravel Sponsors
+Now when xampp is installed, you need to clone the reposiroty into the Xampp/htdocs folder. Instructions on how to clone a repository can 
+be found [here](https://services.github.com/on-demand/github-desktop/clone-repository-github-desktop). Just don't forget to set the local path to a subfolder of Xampp/htdocs (**example path:** C:\Users\Ikiwi\Desktop\XAMPP\htdocs\procentras).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Downloading required libraries
 
-### Premium Partners
+Since we're using Laravel framework our code is dependent on external libraries. To download those libraries follow these steps: <br/>
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
+1. Run windows command prompt as an aministrator.
+2. Navigate to /procentras directory (with cmd).
+3. Run the following command:
 
-## Contributing
+    ```shell
+    composer install
+    ```
+All of the required libs should be installed now without the need to do anything else.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Setting application encryption key
 
-## Code of Conduct
+Laravel framework requires an encryption key and an .env file. This file should be located in \procentras folder along with .env.example. 
+If it's not there (which it will likely be, if you cloned the repo), you need to create it and copy .env.example file content into it.
+This can be easily done by simply running this command in cmd (make sure you are in \procentras directory).
+```shell
+copy .env.example .env
+```
+After the .env file is there and filled with .env.example content, run:
+```shell
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Creating storage folders
 
-## Security Vulnerabilities
+Navigate to \procentras directory and run the following commands into cmd:
+```shell
+mkdir storage
+cd storage
+mkdir app
+mkdir cache
+mkdir framework
+mkdir logs
+cd framework
+mkdir cache
+mkdir logs
+mkdir sessions
+mkdir views
+```
+You can simply just copy-paste the entire thing into cmd and it will be run without the need of pasting each command one by one.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Database setup
 
-## License
+First you need to create the database itself and setup a user account for that database using phpmyadmin. Instructions on how to to that
+can be found [Here](http://webvaultwiki.com.au/Create-Mysql-Database-User-Phpmyadmin.ashx). Don't create any tables yet, that will
+be done through migrations. <br/>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Once that is done, open up the .env file (located in \procentras) and change DB_DATABASE, DB_USERNAME and DB_PASSWORD to match the values that you chose during database creation process. </br>
+
+To check if the database is connected open your browser and type http://localhost/procentras/ (link may differ depending on your 
+repository folder name). If no error appears and you see the home page, it means the database was connected succesfully. If you
+see an error, check your .env file.
+
+Once the database is connected, navigate to \procentras folder with cmd and run the following command:
+```shell
+php artisan migrate
+```
+All the required tables will be created using the migration files located [here](https://github.com/IkiwiWorspace/procentras/tree/master/app/database/migrations)
