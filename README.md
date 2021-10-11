@@ -65,7 +65,7 @@ mkdir cache
 mkdir logs
 mkdir sessions
 mkdir views
-cd..
+cd ..
 cd app
 mkdir public
 cd public
