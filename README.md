@@ -54,26 +54,8 @@ php artisan key:generate
 
 Navigate to \procentras directory and run the following commands into cmd:
 ```shell
-mkdir storage
-cd storage
-mkdir app
-mkdir cache
-mkdir framework
-mkdir logs
-cd framework
-mkdir cache
-mkdir logs
-mkdir sessions
-mkdir views
-cd ..
-cd app
-mkdir public
-cd public
-mkdir images
-cd images
-mkdir products
+php artisan storage:link
 ```
-You can simply just copy-paste the entire thing into cmd and it will be run without the need of pasting each command one by one.
 
 ### Database setup
 
@@ -95,7 +77,7 @@ All the required tables will be created using the migration files located [here]
 
 After that, run the following command, to create admin user:
 ```shell
-php artisan db:seed
+php artisan db:seed --class="UserSeeder"
 ```
 Copy all file [db.sql](https://github.com/IkiwiWorkspace/procentras/blob/master/db.sql) into database to add all data
 
