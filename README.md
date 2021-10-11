@@ -65,6 +65,13 @@ mkdir cache
 mkdir logs
 mkdir sessions
 mkdir views
+cd..
+cd app
+mkdir public
+cd public
+mkdir images
+cd images
+mkdir products
 ```
 You can simply just copy-paste the entire thing into cmd and it will be run without the need of pasting each command one by one.
 
