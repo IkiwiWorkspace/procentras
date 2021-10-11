@@ -1,5 +1,4 @@
-# Realpro
-
+# Procentras
 Reference sheet for the project. To be edited when more relevant info needs to be displayed in a convenient location.
 
 ## Installation
