@@ -86,3 +86,15 @@ Once the database is connected, navigate to \procentras folder with cmd and run 
 php artisan migrate
 ```
 All the required tables will be created using the migration files located [here](https://github.com/IkiwiWorspace/procentras/tree/master/app/database/migrations)
+
+After that, run the following command, to create admin user:
+```shell
+php artisan db:seed
+```
+Copy all file [db.sql](https://github.com/IkiwiWorkspace/procentras/blob/master/db.sql) into database to add all data
+
+Admin user logins:
+```shell
+admin@admin.com
+Admin123.
+```
